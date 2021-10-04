@@ -1,9 +1,42 @@
 
 
+var quizQuestions = [
+    {
+        question: "?????",
+        answers: {
+          a: "1",
+          b: "2",
+          c: "3",
+          d: "4"
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "?????",
+        answers: {
+          a: "1",
+          b: "2",
+          c: "3",
+          d: "4"
+        },
+        correctAnswer: "a"
+    },
+    {
+      question: "?????",
+      answers: {
+        a: "1",
+        b: "2",
+        c: "3",
+        d: "4"
+      },
+      correctAnswer: "a"
+    }
+  ];
+
 
 
 function buttonVisibility() {
-    var x = document.querySelector(".previous-button");
+    var x = document.querySelector(".quiz-questions");
     if (x.style.visibility === 'visible') {
       x.style.visibility = 'visible';
     } else {
@@ -12,7 +45,6 @@ function buttonVisibility() {
   }
 
 
+
   
-  document.querySelector(".start-button").addEventListener("click", function startButton() {
-    alert("Hello World!");
-  });
+  document.querySelector(".start-button").addEventListener("click", buttonVisibility)
