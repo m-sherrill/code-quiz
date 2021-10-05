@@ -1,6 +1,9 @@
 body {
-    background-color: #E4E3E3;
+    background-color: white;
     font-size: 16px;
+    width: 100%;
+    height: 100%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 header {
@@ -17,12 +20,11 @@ header {
 main {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .quiz-container {
     background-color: #84A9AC;
-    height: 300px;
-    width: 500px;
     margin: 25px;
     padding: 10px;
     display: flex;
@@ -31,6 +33,21 @@ main {
     justify-content: space-evenly;
     text-align: center;
     border: 1px solid black;
+}
+
+.quiz-questions {
+    margin: 20px;
+    padding 5px;
+    font-weight: bold;
+}
+
+.question-container {
+    display: inline;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
 }
 
 .timer-container {
@@ -53,6 +70,26 @@ main {
 button {
     border: 2px solid black;
     background-color: #E4E3E3;
-    padding: 5px;
+    padding: 10px;
     box-shadow: 1px 1px 3px #204051;
+    margin: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    border: 2px solid white;
+    background-color: #6d6d6d;
+    color: white;
+}
+
+.start-button,
+.previous-button,
+.next-button {
+    height: 50px;
+    width: 150px;
+    font-size: 150%;
+}
+
+.quiz-questions {
+    font-size: 150%;
 }

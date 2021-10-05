@@ -1,4 +1,4 @@
-
+var quizContainer = document.querySelector("quiz-container")
 
 var quizQuestions = [
     {
@@ -35,16 +35,47 @@ var quizQuestions = [
 
 
 
-function buttonVisibility() {
-    var x = document.querySelector(".quiz-questions");
-    if (x.style.visibility === 'visible') {
-      x.style.visibility = 'visible';
-    } else {
-      x.style.visibility = 'hidden';
-    }
+  function buildQuiz(){
+    // variable to store the HTML output
+    var output = [];
+  
+    // for each question...
+    quizQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+  
+        var answers = [];
+  
+        for(letter in currentQuestion.answers){
+  
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
+  
+        // add this question and its answers to the output
+        output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+        );
+      }
+    );
+  
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('')
+
+    console.log(output)
   }
 
 
-
+  buildQuiz()
   
-  document.querySelector(".start-button").addEventListener("click", buttonVisibility)
+  // need a start quiz function
+
+  // Need to have the quiz go through the questions
+  // provide a warning if they do not include an answer
+  // results to be saved with their initials
