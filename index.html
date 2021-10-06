@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Code Quiz</title>
@@ -15,33 +16,40 @@
 
     </header>
     <main>
+
+      <!-- The container with the questions, answers, and start button -->
     <div class="quiz-container">
       <div class="question-container">
-        <div class="quiz-questions" data-content="quiz-questions">
+        <div class="quiz-questions">
           Question
         </div>
         <div class="quiz-options">
-          <button class="btn">Answer 1</button>
-          <button class="btn">Answer 2</button>
-          <button class="btn">Answer 3</button>
-          <button class="btn">Answer 4</button>
+          <div>Starting Quiz little block of information!</div>
+          <button id="answer1">Answer 1</button>
+          <button id="answer2">Answer 2</button>
+          <button id="answer3">Answer 3</button>
+          <button id="answer4">Answer 4</button>
         </div>
       </div>
-        <div class="control-buttons">
-            <button class="start-button" data-content="Start Quiz">Start Quiz</button>
-            <button class="previous-button" data-content="Previous">Previous</button>
-            <button class="next-button" data-content="Next">Next</button>
+        <div class="controls">
+            <button id="start-button">Start Quiz</button>
         </div>
     </div>
 
+    <!-- Timer container -->
     <div class="timer-container">
         <br />
-        Timer
+        Time Remaining
         <br />
         <h2 class="countdown">60</h2>
     </div>
 
-    <div class="score">Score Display</div>
+  <!-- Score Section -->
+    <div class="score-container">
+      <input type="text"> 
+      <div id="highscores">High Scores</div>
+      <button id="clearhighscores">Clear High Scores</button>
+    </div>
 
     <script src="assets/js/script.js"></script>
     

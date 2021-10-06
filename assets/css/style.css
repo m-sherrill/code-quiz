@@ -21,6 +21,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .quiz-container {
@@ -29,20 +30,21 @@ main {
     padding: 10px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-content: space-around;
     justify-content: space-evenly;
     text-align: center;
     border: 1px solid black;
 }
 
+.question-container {
+    display: block;
+}
+
 .quiz-questions {
     margin: 20px;
     padding 5px;
     font-weight: bold;
-}
-
-.question-container {
-    display: inline;
 }
 
 .quiz-options {
@@ -52,17 +54,18 @@ main {
 
 .timer-container {
     background-color: #617d80;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     margin: 10px;
     text-align: center;
     color: white;
     border: 1px solid black;
     text-shadow: 2px 2px black;
+    font-size: 20px;
 }
 
 .timer-container h2 {
-    font-size: 200%;
+    font-size: 300%;
     padding: 10px;
 
 }
@@ -93,3 +96,23 @@ button:hover {
 .quiz-questions {
     font-size: 150%;
 }
+
+.score-container {
+    flex: 100%;
+    text-align: center;
+    font-size: 150%;
+    width: 500px;
+    max-width: 80%;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+}
+
+input {
+    width: 50px;
+}
+
+#highscores {
+    padding: 20px;
+}
+

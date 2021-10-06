@@ -1,6 +1,15 @@
-var quizContainer = document.querySelector("quiz-container")
+let quizContainer = $(".quiz-container")
+let questionContainer = $(".question-container")
+let quizQuestions = $(".quiz-questions")
+let quizOptions = $(".quiz-options")
+let controls = $(".controls")
+let timerContainer = $(".timer-container")
+let countdown = $(".countdown")
+let scoreContainer = $(".score-container")
+let highScores = $("#highscores")
+let clearHighScores = $("#clearhighscores")
 
-var quizQuestions = [
+const questions = [
     {
         question: "?????",
         answers: {
@@ -35,47 +44,40 @@ var quizQuestions = [
 
 
 
-  function buildQuiz(){
-    // variable to store the HTML output
-    var output = [];
-  
-    // for each question...
-    quizQuestions.forEach(
-      (currentQuestion, questionNumber) => {
-  
-        var answers = [];
-  
-        for(letter in currentQuestion.answers){
-  
-          // ...add an HTML radio button
-          answers.push(
-            `<label>
-              <input type="radio" name="question${questionNumber}" value="${letter}">
-              ${letter} :
-              ${currentQuestion.answers[letter]}
-            </label>`
-          );
-        }
-  
-        // add this question and its answers to the output
-        output.push(
-          `<div class="question"> ${currentQuestion.question} </div>
-          <div class="answers"> ${answers.join('')} </div>`
-        );
-      }
-    );
-  
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join('')
-
-    console.log(output)
-  }
-
-
-  buildQuiz()
   
   // need a start quiz function
 
   // Need to have the quiz go through the questions
   // provide a warning if they do not include an answer
   // results to be saved with their initials
+
+
+function startTimer() {
+var counter = 60;
+var interval = setInterval(function(event) {
+    counter--;
+    // Display 'counter' wherever you want to display it.
+    if (counter <= 0) {
+     		clearInterval(interval)
+      	$('.countdown').html("<h5>Game Over<h5>") 
+        return
+    }  else if (counter < 10) {
+      $(".countdown").text(counter)
+      $(".timer-container").css("background-color", "#8B0000")
+    } else {
+      $(".countdown").text(counter)
+    }
+}, 1000)
+}
+
+function startQuiz(event) {
+  startTimer()
+  $("#start-button").css("display", "none")
+  renderQuestion()
+  
+}
+
+$("#start-button").click(startQuiz)
+
+
+  
