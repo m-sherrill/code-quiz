@@ -9,49 +9,66 @@ let scoreContainer = $(".score-container")
 let highScores = $("#highscores")
 let clearHighScores = $("#clearhighscores")
 
-const questions = [
+let questions = [
     {
         question: "?????",
-        answers: {
-          a: "1",
-          b: "2",
-          c: "3",
-          d: "4"
-        },
-        correctAnswer: "a"
-    },
-    {
-        question: "?????",
-        answers: {
-          a: "1",
-          b: "2",
-          c: "3",
-          d: "4"
-        },
-        correctAnswer: "a"
+        choiceA: "A",
+        choiceB: "B",
+        choiceC: "C",
+        choiceD: "D",
+        correct: "A"
     },
     {
       question: "?????",
-      answers: {
-        a: "1",
-        b: "2",
-        c: "3",
-        d: "4"
-      },
-      correctAnswer: "a"
+      choiceA: "A",
+      choiceB: "B",
+      choiceC: "C",
+      choiceD: "D",
+      correct: "A"
+    },
+    {
+      question: "?????",
+        choiceA: "A",
+        choiceB: "B",
+        choiceC: "C",
+        choiceD: "D",
+        correct: "A"
     }
-  ];
+  ]
+
+let lastQuestionIndex = questions.length - 1
+var currentQuestionIndex = 0
+
+// Rendering the questions
+
+function renderQuestion() {
+  let q = questions[currentQuestionIndex]
+  quizQuestions.text(q.question)
+  $("#answer1").text(q.choiceA)
+  $("#answer2").text(q.choiceB)
+  $("#answer3").text(q.choiceC)
+  $("#answer4").text(q.choiceD)
+}
+
+function progressRender() {
+  for(let qIndex=0; qIndex <= lastQuestionIndex; qIndex++) {
+
+  }
+}
+
+// if I want to add a progress bar
+function answerIsCorrect(){
+
+}
+
+// if I want to add a progress bar
+function answerIsWrong(){
+
+}
 
 
 
-  
-  // need a start quiz function
-
-  // Need to have the quiz go through the questions
-  // provide a warning if they do not include an answer
-  // results to be saved with their initials
-
-
+// 11:40 
 function startTimer() {
 var counter = 60;
 var interval = setInterval(function(event) {
@@ -70,14 +87,37 @@ var interval = setInterval(function(event) {
 }, 1000)
 }
 
+let score = 0
+
+function checkAnswer(answer){
+   if(questions[currentQuestionIndex].correct == answer){
+    score++;
+  } else {
+    
+  }
+  if(currentQuestionIndex < lastQuestionIndex) {
+    count = 0
+    currentQuestionIndex++
+    questionRender()
+  } else {
+    clearInterval(timer)
+  }
+}
+
 function startQuiz(event) {
   startTimer()
   $("#start-button").css("display", "none")
   renderQuestion()
+  progressRender()
+  checkAnswer()
   
 }
 
 $("#start-button").click(startQuiz)
 
+$("#answer1").click(checkAnswer)
+$("#answer2").click(checkAnswer)
+$("#answer3").click(checkAnswer)
+$("#answer4").click(checkAnswer)
 
-  
+
