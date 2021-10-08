@@ -1,43 +1,81 @@
-let quizContainer = $(".quiz-container")
-let questionContainer = $(".question-container")
-let quizQuestions = $(".quiz-questions")
-let quizOptions = $(".quiz-options")
-let controls = $(".controls")
-let timerContainer = $(".timer-container")
-let countdown = $(".countdown")
-let scoreContainer = $(".score-container")
-let highScores = $("#highscores")
-let clearHighScores = $("#clearhighscores")
+const quizContainer = $(".quiz-container")
+const questionContainer = $(".question-container")
+const quizQuestions = $(".quiz-questions")
+const quizOptions = $(".quiz-options")
+const controls = $(".controls")
+const timerContainer = $(".timer-container")
+const countdown = $(".countdown")
+const scoreContainer = $(".score-container")
+const highScores = $("#highscores")
+const clearHighScores = $("#clearhighscores")
+const currentScore = $("#current-score")
+const saveScore = $("#save-score")
+const startButton = $("#start-button")
+
+// Questions and Answer Arrays
 
 let questions = [
     {
-        question: "?????",
-        choiceA: "A",
+        question: "question 1",
+        choiceA: "Correct",
         choiceB: "B",
         choiceC: "C",
         choiceD: "D",
-        correct: "A"
+        correct: "A",
     },
     {
-      question: "?????",
+      question: "question 2",
       choiceA: "A",
-      choiceB: "B",
+      choiceB: "Correct",
       choiceC: "C",
       choiceD: "D",
-      correct: "A"
+      correct: "B",
     },
     {
-      question: "?????",
+      question: "question 3",
         choiceA: "A",
         choiceB: "B",
-        choiceC: "C",
+        choiceC: "Correct",
         choiceD: "D",
-        correct: "A"
+        correct: "C",
+    },
+    {
+      question: "question 3",
+        choiceA: "A",
+        choiceB: "B",
+        choiceC: "Correct",
+        choiceD: "D",
+        correct: "C",
+    },
+    {
+      question: "question 3",
+        choiceA: "A",
+        choiceB: "B",
+        choiceC: "Correct",
+        choiceD: "D",
+        correct: "C",
     }
   ]
 
-let lastQuestionIndex = questions.length - 1
-var currentQuestionIndex = 0
+// variables for the questions
+
+const lastQuestionIndex = questions.length - 1
+let currentQuestionIndex = 0
+var quizTime = 60
+let timer
+let score = 0
+
+
+
+var isCorrect = function answerIsCorrect(){
+  $(".btn")
+}
+
+// for wrong answer function
+
+var isWrong = function answerIsWrong(){
+  
+}
 
 // Rendering the questions
 
@@ -50,74 +88,88 @@ function renderQuestion() {
   $("#answer4").text(q.choiceD)
 }
 
-function progressRender() {
-  for(let qIndex=0; qIndex <= lastQuestionIndex; qIndex++) {
-
-  }
-}
-
-// if I want to add a progress bar
-function answerIsCorrect(){
-
-}
-
-// if I want to add a progress bar
-function answerIsWrong(){
-
-}
-
-
-
-// 11:40 
-function startTimer() {
-var counter = 60;
-var interval = setInterval(function(event) {
-    counter--;
-    // Display 'counter' wherever you want to display it.
-    if (counter <= 0) {
-     		clearInterval(interval)
-      	$('.countdown').html("<h5>Game Over<h5>") 
-        return
-    }  else if (counter < 10) {
-      $(".countdown").text(counter)
-      $(".timer-container").css("background-color", "#8B0000")
-    } else {
-      $(".countdown").text(counter)
-    }
-}, 1000)
-}
-
-let score = 0
-
-function checkAnswer(answer){
-   if(questions[currentQuestionIndex].correct == answer){
-    score++;
-  } else {
-    
-  }
-  if(currentQuestionIndex < lastQuestionIndex) {
-    count = 0
-    currentQuestionIndex++
-    questionRender()
-  } else {
-    clearInterval(timer)
-  }
-}
+// Start Quiz 
 
 function startQuiz(event) {
-  startTimer()
-  $("#start-button").css("display", "none")
-  renderQuestion()
+  $(startButton).css("display", "none")
+  renderQuestion ()
+  $(questionContainer).css("display", "block")
   progressRender()
-  checkAnswer()
+  startTimer()
+  timer = setInterval(startTimer, 1000)
   
 }
 
-$("#start-button").click(startQuiz)
+// for correct answer function
 
-$("#answer1").click(checkAnswer)
-$("#answer2").click(checkAnswer)
-$("#answer3").click(checkAnswer)
-$("#answer4").click(checkAnswer)
+
+
+// checking for correct answer
+
+function checkAnswer(answer){
+  if( answer == questions[currentQuestionIndex].correct) {
+      score++
+      isCorrect
+      
+  }else{
+      isWrong
+      quizTime -= 3
+  }
+  count = 0;
+  if(currentQuestionIndex < lastQuestionIndex) {
+      currentQuestionIndex++
+      renderQuestion()
+  }else{
+      // end the quiz and show the score
+      clearInterval(timer)
+      scoreRender()
+      $('.countdown').html("<h5>Game Over<h5>")
+      quizQuestions.text("Hope you had fun!")
+      quizOptions.text("Thank you for playing!")
+      $(startButton).css("display", "block").css("text-align", "center")
+  }
+}
+
+// Progress rendered - moving to the next question 
+
+function progressRender() {
+  for(let qIndex=0; qIndex <= lastQuestionIndex; qIndex++) {
+  }
+}
+
+// Timer 
+
+function startTimer() {
+      // Display 'counter' wherever you want to display it.
+    if (quizTime <= 0) {
+     $('.countdown').html("<h5>Game Over<h5>") 
+      return
+    }  else if (quizTime< 10) {
+              $(".countdown").text(quizTime)
+              $(".timer-container").css("background-color", "#8B0000")
+              quizTime --
+            } else {
+              $(".countdown").text(quizTime)
+              quizTime --
+            }
+  }
+
+ 
+
+
+// Score Rendering
+
+
+function scoreRender(){
+  currentScore.css("display", "block")
+  currentScore.text(score + " / 5")
+  saveScore.css("display", "block")
+}
+
+
+
+// Click listener for start button 
+
+$("#start-button").click(startQuiz)
 
 

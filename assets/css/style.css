@@ -35,10 +35,12 @@ main {
     justify-content: space-evenly;
     text-align: center;
     border: 1px solid black;
+    height: 300px;
+    width: 300px;
 }
 
 .question-container {
-    display: block;
+    display: none;
 }
 
 .quiz-questions {
@@ -54,18 +56,19 @@ main {
 
 .timer-container {
     background-color: #617d80;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     margin: 10px;
     text-align: center;
     color: white;
     border: 1px solid black;
     text-shadow: 2px 2px black;
     font-size: 20px;
+    border-radius: 50%;
 }
 
 .timer-container h2 {
-    font-size: 300%;
+    font-size: 20px;
     padding: 10px;
 
 }
@@ -85,9 +88,7 @@ button:hover {
     color: white;
 }
 
-.start-button,
-.previous-button,
-.next-button {
+.start-button {
     height: 50px;
     width: 150px;
     font-size: 150%;
@@ -115,4 +116,13 @@ input {
 #highscores {
     padding: 20px;
 }
+
+#save-score {
+    display: none;
+}
+
+#current-score {
+    display: none;
+}
+
 
