@@ -126,7 +126,6 @@ function checkAnswer(answer){
       $('.countdown').html("<h5>Game Over<h5>")
       quizQuestions.text("Hope you had fun!")
       quizOptions.text("Thank you for playing!")
-      $(startButton).css("display", "block").css("text-align", "center")
   }
 }
 
