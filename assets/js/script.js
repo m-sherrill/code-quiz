@@ -144,6 +144,7 @@ function checkAnswer(answer){
       renderQuestion()
   }else{
       // end the quiz and show the score
+      localStorage.setItem("mostRecentScore", score)
       clearInterval(timer)
       scoreRender()
         $('.countdown').html("<h5>Game Over<h5>")
@@ -152,6 +153,13 @@ function checkAnswer(answer){
         $("#replay").css("display", "inline")
 
   }
+}
+
+function scoreRender(){
+  currentScore.css("display", "block")
+  currentScore.text(score + " / 5")
+  $(replay).css("display", "block")
+  saveScore.css("display", "block")
 }
 
 // Timer 
@@ -177,12 +185,7 @@ function startTimer() {
 // Score Rendering
 
 
-function scoreRender(){
-  currentScore.css("display", "block")
-  currentScore.text(score + " / 5")
-  $(replay).css("display", "block")
-  saveScore.css("display", "block")
-}
+
 
 
 
@@ -190,4 +193,64 @@ function scoreRender(){
 
 $("#start-button").click(startQuiz)
 $("#replay").click(replayQuiz)
-$
+
+
+
+
+var saveScore = $("#save-score")
+var highScoreList = $("#high-score-list");
+var initialsInput = $("#initials")
+var mostRecentScore = localStorage.getItem("mostRecentScore")
+var saveButton = $("#save-button")
+var initials = JSON.parse(localStorage.getItem("Initials"))
+
+
+$(saveButton).on("click", function(event) {
+
+  window.localStorage.setItem('Initials', JSON.stringify(initialsInput.val()));
+  console.log("i was clicked")
+
+})
+
+var highScoreFinal = [initials, mostRecentScore]
+
+function renderHighScore () {
+  
+  for (let i = 0; i < highScoreFinal.length; i++) {
+  var initialSpan = $("<span>")
+  var scoreSpan = $("<span>")
+
+  $(initialSpan).html(initials + " scored ")
+  $(scoreSpan).html(mostRecentScore + "/5")
+
+
+  console.log(initialSpan)
+  $(highScoreList).append(initialSpan)
+  $(highScoreList).append(scoreSpan)
+  
+ 
+}
+}
+
+renderHighScore()
+
+
+// for (let i = 0; i < savedTodos.length; i++) {
+//   // Create an <li> element in memory (does not appear in the document yet)
+//   let newTodo = document.createElement("li");
+//   // Set the inner text of that new li with the contents from local storage.
+//   // The savedTodos[i] is accessing data in the localStorage array.
+//   // The [i] is a different number each loop.
+//   // The `.task` is accessing 'task' property on the object in the array.
+//   newTodo.innerText = savedTodos[i].task;
+//   // Create a new property on the element called `isCompleted` and assign a boolean value.
+//   // This is only accessible in code and will not show up when appending to the DOM.
+//   newTodo.isCompleted = savedTodos[i].isCompleted ? true : false;
+//   // Check the value we just set.
+//   if (newTodo.isCompleted) {
+//     // Create a style for the element if it is done (strike it out)
+//     newTodo.style.textDecoration = "line-through";
+//   }
+//   // Actually append the new element to the document (this will make it visible)
+//   todoList.appendChild(newTodo);
+// }

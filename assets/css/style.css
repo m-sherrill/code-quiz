@@ -34,20 +34,23 @@ main {
     justify-content: space-evenly;
     text-align: center;
     height: 350px;
-    width: 350px;
+    width: 450px;
 }
 
 .question-container {
     display: none;
+    
 }
 
 .quiz-questions {
     margin: 20px;
-    padding 5px;
+    padding: 20px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .quiz-options {
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(1, auto);
 }
@@ -103,11 +106,15 @@ button:hover {
     border: 1px solid black;
     padding: 20px;
     margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
 }
 
-input {
-    width: 100px;
+#clearhighscores {
+    font-size: 16px;
+    width: 200px;
 }
+
 
 #highscores {
     padding: 20px;
@@ -123,6 +130,7 @@ input {
 
 input {
     padding: 5px;
+    width: 100px;
 }
 
 #right-wrong-tracker {
@@ -148,4 +156,8 @@ img {
 
 #replay {
     display: none;
+}
+
+footer {
+    padding: 20px;
 }
