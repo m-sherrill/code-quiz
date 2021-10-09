@@ -1,16 +1,19 @@
-const quizContainer = $(".quiz-container")
-const questionContainer = $(".question-container")
-const quizQuestions = $(".quiz-questions")
-const quizOptions = $(".quiz-options")
-const controls = $(".controls")
-const timerContainer = $(".timer-container")
-const countdown = $(".countdown")
-const scoreContainer = $(".score-container")
-const highScores = $("#highscores")
-const clearHighScores = $("#clearhighscores")
-const currentScore = $("#current-score")
-const saveScore = $("#save-score")
-const startButton = $("#start-button")
+var quizContainer = $(".quiz-container")
+var questionContainer = $(".question-container")
+var quizQuestions = $(".quiz-questions")
+var quizOptions = $(".quiz-options")
+var controls = $(".controls")
+var timerContainer = $(".timer-container")
+var countdown = $(".countdown")
+var scoreContainer = $(".score-container")
+var highScores = $("#highscores")
+var clearHighScores = $("#clearhighscores")
+var currentScore = $("#current-score")
+var saveScore = $("#save-score")
+var startButton = $("#start-button")
+var startInfo = $("#starting-info")
+var progress = $("#progress")
+var prog = $(".prog")
 
 // Questions and Answer Arrays
 
@@ -59,23 +62,11 @@ let questions = [
 
 // variables for the questions
 
-const lastQuestionIndex = questions.length - 1
+var lastQuestionIndex = questions.length - 1
 let currentQuestionIndex = 0
 var quizTime = 60
 let timer
 let score = 0
-
-
-
-var isCorrect = function answerIsCorrect(){
-  $(".btn")
-}
-
-// for wrong answer function
-
-var isWrong = function answerIsWrong(){
-  
-}
 
 // Rendering the questions
 
@@ -91,6 +82,7 @@ function renderQuestion() {
 // Start Quiz 
 
 function startQuiz(event) {
+  $(startInfo).css("display", "none")
   $(startButton).css("display", "none")
   renderQuestion ()
   $(questionContainer).css("display", "block")
@@ -100,20 +92,51 @@ function startQuiz(event) {
   
 }
 
-// for correct answer function
+function replayQuiz(){
+  saveScore.css("display", "none")
+  $("#replay").css("display", "none")
+  $(startInfo).css("display", "none")
+  $(currentScore).css("display", "none")
+  $(quizQuestions).css("display", "inline")
+  $(quizOptions).css("display", "grid")
+  quizTime = 60;
+  score = 0;
+  currentQuestionIndex = 0;
+  startQuiz()
+}
 
+// Progress rendered - moving to the next question 
 
+function progressRender() {
+  for(let qIndex=0; qIndex <= lastQuestionIndex; qIndex++) {
+    $(progress).html("<div class='prog' id="+ qIndex +"></div>")
+  }
+}
+
+// Functions for if the answer is correct or incorrect
+
+function isCorrect() {
+    let img = $("<img>")
+      $(".prog").append(img)
+      $(img).attr("src", "assets/images/happy.png")
+}
+
+function isWrong() {
+  let img = $("<img>")
+      $(".prog").append(img)
+      $(img).attr("src", "assets/images/sad.png")
+}
 
 // checking for correct answer
 
 function checkAnswer(answer){
   if( answer == questions[currentQuestionIndex].correct) {
       score++
-      isCorrect
-      
+      isCorrect ()
+
   }else{
-      isWrong
       quizTime -= 3
+      isWrong ()
   }
   count = 0;
   if(currentQuestionIndex < lastQuestionIndex) {
@@ -123,16 +146,11 @@ function checkAnswer(answer){
       // end the quiz and show the score
       clearInterval(timer)
       scoreRender()
-      $('.countdown').html("<h5>Game Over<h5>")
-      quizQuestions.text("Hope you had fun!")
-      quizOptions.text("Thank you for playing!")
-  }
-}
+        $('.countdown').html("<h5>Game Over<h5>")
+        quizQuestions.css("display", "none")
+        quizOptions.css("display", "none")
+        $("#replay").css("display", "inline")
 
-// Progress rendered - moving to the next question 
-
-function progressRender() {
-  for(let qIndex=0; qIndex <= lastQuestionIndex; qIndex++) {
   }
 }
 
@@ -145,7 +163,7 @@ function startTimer() {
       return
     }  else if (quizTime< 10) {
               $(".countdown").text(quizTime)
-              $(".timer-container").css("background-color", "#8B0000")
+              $(".timer-container").css("color", "#8B0000")
               quizTime --
             } else {
               $(".countdown").text(quizTime)
@@ -162,6 +180,7 @@ function startTimer() {
 function scoreRender(){
   currentScore.css("display", "block")
   currentScore.text(score + " / 5")
+  $(replay).css("display", "block")
   saveScore.css("display", "block")
 }
 
@@ -170,5 +189,5 @@ function scoreRender(){
 // Click listener for start button 
 
 $("#start-button").click(startQuiz)
-
-
+$("#replay").click(replayQuiz)
+$

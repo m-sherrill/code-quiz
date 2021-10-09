@@ -21,21 +21,23 @@
     <div class="quiz-container">
       <div class="question-container">
         <div class="quiz-questions">
-          Question
         </div>
-        <div class="quiz-options">
-          <div>Starting Quiz little block of information!</div>
+          <div class="quiz-options">
           <button id="answer1" class="btn" onclick="checkAnswer('A')">Answer 1</button>
           <button id="answer2" class="btn" onclick="checkAnswer('B')">Answer 2</button>
           <button id="answer3" class="btn" onclick="checkAnswer('C')">Answer 3</button>
           <button id="answer4" class="btn" onclick="checkAnswer('D')">Answer 4</button>
+        </div> 
+        <div id="progress">
+          <div class="prog"></div>
         </div>
-        <div id="answer-is-correct"></div>
-        <div id="answer-is-wrong"></div>
-      </div>
+        <div id="current-score"></div>
+          </div>
+      <div id="starting-info">Starting Quiz little block of information!</div>
         <div class="controls">
             <div class="answer-text"></div>
             <button id="start-button">Start Quiz</button>
+            <button id="replay">Play Again</button>
         </div>
     </div>
 
@@ -49,10 +51,15 @@
 
   <!-- Score Section -->
     <div class="score-container">
-      <div id="current-score"></div>
       <div id="save-score">
-      <input type="text"> </div>
-      <div id="highscores">High Scores</div>
+      Enter your initials to save your high score 
+      <br />
+      <input type="text"> <button>Save</button></div>
+      <div id="highscores">High Scores
+        <ul>
+
+        </ul>
+      </div>
       <button id="clearhighscores">Clear High Scores</button>
     </div>
 

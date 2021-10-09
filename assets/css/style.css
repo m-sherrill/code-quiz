@@ -81,6 +81,9 @@ button:hover {
     color: white;
 }
 
+#right-wrong-tracker {
+    padding: 20px;
+}
 .start-button {
     height: 50px;
     width: 150px;
@@ -103,7 +106,7 @@ button:hover {
 }
 
 input {
-    width: 50px;
+    width: 100px;
 }
 
 #highscores {
@@ -120,4 +123,29 @@ input {
 
 input {
     padding: 5px;
+}
+
+#right-wrong-tracker {
+    padding: 20px;
+}
+
+img {
+    padding: 5px;
+}
+
+.prog {
+    height: 24px;
+    width: 24px;
+    display: inline;
+}
+
+
+#save-score {
+    font-size: 16px;
+    display: none;
+    padding: 15px;
+}
+
+#replay {
+    display: none;
 }
