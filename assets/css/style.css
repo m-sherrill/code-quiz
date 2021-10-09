@@ -25,7 +25,6 @@ main {
 }
 
 .quiz-container {
-    background-color: #84A9AC;
     margin: 25px;
     padding: 10px;
     display: flex;
@@ -34,7 +33,6 @@ main {
     align-content: space-around;
     justify-content: space-evenly;
     text-align: center;
-    border: 1px solid black;
     height: 350px;
     width: 350px;
 }
@@ -55,14 +53,10 @@ main {
 }
 
 .timer-container {
-    background-color: #617d80;
     height: 150px;
     width: 150px;
     margin: 10px;
     text-align: center;
-    color: white;
-    border: 1px solid black;
-    text-shadow: 2px 2px black;
     font-size: 20px;
 }
 
