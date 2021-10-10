@@ -18,7 +18,7 @@ Create a code quiz. The quiz includes a start button and then moves through a se
 
 ## Link to Deployed Application
 
-[Live Depoyment Link](https://m-sherrill.github.io/code-quiz/)
+[Live Depoyed Link](https://m-sherrill.github.io/code-quiz/)
 
 ## Screenshots of Finished Product
 
