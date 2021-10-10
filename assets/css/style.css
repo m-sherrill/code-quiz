@@ -1,3 +1,5 @@
+/* Body */
+
 body {
     background-color: white;
     font-size: 16px;
@@ -5,6 +7,8 @@ body {
     height: 100%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/* Header */
 
 header {
     background-color: #204051;
@@ -17,12 +21,41 @@ header {
     text-shadow: 2px 2px black;
 }
 
+/* Main and general styles */
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
+
+button {
+    border: 2px solid black;
+    background-color: #E4E3E3;
+    padding: 5px;
+    box-shadow: 1px 1px 3px #204051;
+    margin: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    border: 2px solid white;
+    background-color: #6d6d6d;
+    color: white;
+}
+
+img {
+    padding: 5px;
+}
+
+input {
+    padding: 5px;
+    width: 100px;
+    margin: 20px;
+}
+
+/* quiz-container div and children */
 
 .quiz-container {
     margin: 25px;
@@ -45,7 +78,7 @@ main {
 .quiz-questions {
     margin: 20px;
     padding: 20px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -54,6 +87,33 @@ main {
     display: grid;
     grid-template-columns: repeat(1, auto);
 }
+
+#starting-info {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#right-wrong-tracker {
+    padding: 20px;
+}
+
+.start-button {
+    height: 50px;
+    width: 150px;
+    font-size: 150%;
+}
+
+.prog {
+    height: 24px;
+    width: 24px;
+    display: inline;
+}
+
+#replay {
+    display: none;
+}
+
+/* Timer Container */
 
 .timer-container {
     height: 150px;
@@ -69,33 +129,7 @@ main {
 
 }
 
-button {
-    border: 2px solid black;
-    background-color: #E4E3E3;
-    padding: 10px;
-    box-shadow: 1px 1px 3px #204051;
-    margin: 5px;
-    font-weight: bold;
-}
-
-button:hover {
-    border: 2px solid white;
-    background-color: #6d6d6d;
-    color: white;
-}
-
-#right-wrong-tracker {
-    padding: 20px;
-}
-.start-button {
-    height: 50px;
-    width: 150px;
-    font-size: 150%;
-}
-
-.quiz-questions {
-    font-size: 150%;
-}
+/* score container where high scores are stored */
 
 .score-container {
     flex: 100%;
@@ -106,8 +140,15 @@ button:hover {
     border: 1px solid black;
     padding: 20px;
     margin: 20px;
+    background-color: rgb(211, 211, 211);
     display: grid;
     grid-template-columns: repeat(1, auto);
+}
+
+#input-container {
+    display: none;
+    padding: 20px;
+    font-size: 16px;
 }
 
 #clearhighscores {
@@ -115,48 +156,21 @@ button:hover {
     width: 200px;
 }
 
-
 #highscores {
     padding: 20px;
-}
-
-#save-score {
-    display: none;
 }
 
 #current-score {
     display: none;
 }
 
-input {
-    padding: 5px;
-    width: 100px;
-}
-
-#right-wrong-tracker {
-    padding: 20px;
-}
-
-img {
-    padding: 5px;
-}
-
-.prog {
-    height: 24px;
-    width: 24px;
-    display: inline;
-}
-
-
-#save-score {
+#showhighscores {
+    width: 250px;
     font-size: 16px;
-    display: none;
-    padding: 15px;
+    margin: 25px;
 }
 
-#replay {
-    display: none;
-}
+/* Footer */
 
 footer {
     padding: 20px;
