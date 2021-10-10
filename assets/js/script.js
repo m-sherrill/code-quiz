@@ -13,6 +13,7 @@ var startInfo = $("#starting-info")
 var progress = $("#progress")
 var prog = $(".prog")
 var inputContainer = $("#input-container")
+var replay = $("#replay")
 
 // Questions and Answer Arrays
 
@@ -81,10 +82,10 @@ function renderQuestion() {
 // Start Quiz -- triggered when start button is clicked
 
 function startQuiz(event) {
-  $(startInfo).css("display", "none")
-  $(startButton).css("display", "none")
+  startInfo.css("display", "none")
+  startButton.css("display", "none")
   renderQuestion()
-  $(questionContainer).css("display", "block")
+  questionContainer.css("display", "block")
   progressRender()
   startTimer()
   timer = setInterval(startTimer, 1000)
@@ -95,11 +96,11 @@ function startQuiz(event) {
 
 function replayQuiz() {
   saveScore.css("display", "none")
-  $("#replay").css("display", "none")
-  $(startInfo).css("display", "none")
-  $(currentScore).css("display", "none")
-  $(quizQuestions).css("display", "inline")
-  $(quizOptions).css("display", "grid")
+  replay.css("display", "none")
+  startInfo.css("display", "none")
+  currentScore.css("display", "none")
+  quizQuestions.css("display", "inline")
+  quizOptions.css("display", "grid")
   inputContainer.css("display", "none")
   quizTime = 60;
   score = 0;
@@ -111,22 +112,23 @@ function replayQuiz() {
 
 function progressRender() {
   for (let qIndex = 0; qIndex <= lastQuestionIndex; qIndex++) {
-    $(progress).html("<div class='prog' id=" + qIndex + "></div>")
+    progress.html("<div class='prog' id=" + qIndex + "></div>")
   }
 }
+
 
 // Functions for if the answer is correct or incorrect
 
 function isCorrect() {
   let img = $("<img>")
   $(".prog").append(img)
-  $(img).attr("src", "assets/images/happy.png")
+  img.attr("src", "assets/images/happy.png")
 }
 
 function isWrong() {
   let img = $("<img>")
   $(".prog").append(img)
-  $(img).attr("src", "assets/images/sad.png")
+  img.attr("src", "assets/images/sad.png")
 }
 
 // checking for correct answer
@@ -148,12 +150,12 @@ function checkAnswer(answer) {
     // end the quiz and show the score
     clearInterval(timer)
     scoreRender()
-    $('.countdown').html("<h5>Game Over<h5>")
+    countdown.html("<h5>Game Over<h5>")
     quizQuestions.css("display", "none")
     quizOptions.css("display", "none")
     startInfo.text("Thank you for play!")
     startInfo.css("display", "inline")
-    $("#replay").css("display", "inline")
+    replay.css("display", "inline")
     inputContainer.css("display", "block")
 
   }
@@ -164,7 +166,7 @@ function checkAnswer(answer) {
 function scoreRender() {
   currentScore.css("display", "block")
   currentScore.text(score + " / 5")
-  $(replay).css("display", "block")
+  replay.css("display", "block")
   saveScore.css("display", "block")
 }
 
@@ -173,7 +175,7 @@ function scoreRender() {
 function startTimer() {
   // Display 'counter' wherever you want to display it.
   if (quizTime <= 0) {
-    $('.countdown').html("<h5>Game Over<h5>")
+    countdown.html("<h5>Game Over<h5>")
     return
   } else if (quizTime < 10) {
     countdown.text(quizTime)
@@ -189,8 +191,8 @@ function startTimer() {
 
 // Click listener for start button and replay button
 
-$("#start-button").click(startQuiz)
-$("#replay").click(replayQuiz)
+startButton.click(startQuiz)
+replay.click(replayQuiz)
 
 
 // saving initials to high scores and high score display
@@ -200,14 +202,13 @@ $("#replay").click(replayQuiz)
 var saveScore = $("#save-score")
 var highScoreList = $("#high-score-list");
 var initialsInput = $("#initials")
-var savedScores = $("#saved-scores")
 var saveButton = $("#save-button")
 var showHighScoresbtn = $("#showhighscores")
 var clearHighScores = $("#clearhighscores")
 
 // click listener for the submit button connected to the input initials area
 
-$(saveButton).on("click", function (event) {
+saveButton.on("click", function (event) {
   localStorage.setItem(initialsInput.val(), score)
   initialsInput.val('')
 
@@ -215,7 +216,7 @@ $(saveButton).on("click", function (event) {
 
 // click listener showing and refreshing the high score list
 
-$(showHighScoresbtn).on("click", function () {
+showHighScoresbtn.on("click", function () {
   highScoreList.empty()
 
   for (var key in localStorage) {
@@ -241,4 +242,4 @@ $(showHighScoresbtn).on("click", function () {
 
   // click listener to trigger the clearScores function and remove items from the list and local storage 
 
-  $(clearHighScores).on("click", clearScores)
+  $(clearHighScores).click(clearScores) 
